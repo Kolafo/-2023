@@ -1,0 +1,47 @@
+@page "/registration"
+@inject NavigationManager NavigationManager
+
+@if (!isRegistered)
+{
+    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link href="MainLayout.razor.css" rel="stylesheet" type="text/css" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+<div class="text-center mb-5">
+    <h1 style="text-align: center;font-family: 'Roboto Mono', sans-serif;font-weight: 700; font-size: 80px;"><strong>Registration</strong></h1>  
+</div>
+  <input type="text" @bind="login" placeholder="Username" style="display: block; margin-bottom: 15px; border-radius: 9.56px; background-color: E6D690; font-size: 150%" />
+  <input type="password" @bind="password" placeholder="Password" style="display: block; margin-bottom: 15px; border-radius: 9.56px; background-color: E6D690; font-size: 150%" />
+  <button @onclick="AddInfo" style="margin-bottom: 5px;display: block; border-radius: 9.56px; background-color: #F5E2D; border-color: #E4717A; font-size: 150%">Registration</button>
+  <button @onclick="GoBack" style="display: block;  border-radius: 9.56px; border-color: #E4717A; font-size: 150%">Back</button>
+</div>
+}
+else
+{
+   <h1 style="text-align: center; font-weight: bold;">Registration Successful</h1>
+}
+<style>
+body {
+    background-image: url('ФОН.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+</style>
+@code {
+    private bool isRegistered;
+    
+    private string login;
+    private string password;
+
+    private void AddInfo() {
+        CsvLoader.AppendData("users.csv", new User(0, login, password));
+        isRegistered = true;
+    }
+
+    private void GoBack() =>
+        NavigationManager.NavigateTo("/");
+}

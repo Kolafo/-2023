@@ -1,0 +1,39 @@
+@page "/"
+@inject NavigationManager NavigationManager
+
+<style>
+body {
+    background-image: url('ФОН.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+</style>
+<style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  .company-font {
+      font-family: 'Roboto Mono', sans-serif;
+      font-weight: 300;
+      font-size: 128px; /* You can adjust size as needed */
+  }
+</style>
+<link href="MainLayout.razor.css" rel="stylesheet" type="text/css" />
+
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 90vh;">
+  <h1 style="text-align: center;font-family: 'Roboto Mono', sans-serif;font-weight: 700; font-size: 128px;"><strong>Finder</strong></h1>  
+  <div>
+<button @onclick="Registration" style="margin-right: 20px; border-radius: 9.56px; border-color: #E4717A; font-size: 200%"><strong>Registration</strong></button>
+
+<button @onclick="Login" style="margin-right: 20px; border-radius: 9.56px; background-color: #F5E2D; border-color: #E4717A; font-size: 200%"><strong>Login</strong></button>
+  </div>
+</div>
+@code {
+    private void Registration() 
+    {
+        NavigationManager.NavigateTo("/registration");
+    }
+    private void Login()
+    {
+        NavigationManager.NavigateTo("/login");
+    }
+}
