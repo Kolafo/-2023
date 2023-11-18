@@ -103,30 +103,13 @@ using System.Globalization;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Search : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 20 "/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/Pages/Index.razor"
-       
-    private void Registration() 
-    {
-        NavigationManager.NavigateTo("/registration");
-    }
-    private void Login()
-    {
-        NavigationManager.NavigateTo("/login");
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -167,3 +167,7 @@
 /home/runner/Zhiostkaia-viorstka-saita/BlazorApp/obj/Debug/net5.0/BlazorApp.genruntimeconfig.cache
 /home/runner/Zhiostkaia-viorstka-saita/BlazorApp/obj/Debug/net5.0/BlazorApp.csproj.CopyComplete
 /home/runner/Zhiostkaia-viorstka-saita/BlazorApp/bin/Debug/net5.0/CsvHelper.dll
+/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/obj/Debug/net5.0/RazorDeclaration/Pages/LK.razor.g.cs
+/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/obj/Debug/net5.0/Razor/Pages/LK.razor.g.cs
+/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/obj/Debug/net5.0/RazorDeclaration/Pages/Search.razor.g.cs
+/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/obj/Debug/net5.0/Razor/Pages/Search.razor.g.cs

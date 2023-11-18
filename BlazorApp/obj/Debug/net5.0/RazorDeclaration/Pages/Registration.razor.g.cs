@@ -112,20 +112,59 @@ using System.Globalization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/Pages/Registration.razor"
+#line 87 "/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/Pages/Registration.razor"
        
     private bool isRegistered;
-    
     private string login;
     private string password;
+    private string errorPassword;
+    private int step = 1;
 
-    private void AddInfo() {
-        CsvLoader.AppendData("users.csv", new User(0, login, password));
-        isRegistered = true;
+    private void NextStep()
+    {
+        if (step == 1)
+        {
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                errorPassword = "Please fill in both the login and password fields.";
+            }
+            else
+            {
+                errorPassword = null;
+                step++;
+            }
+        }
+        else if (step == 3) // Add this condition to handle the last step
+        {
+            CompleteRegistration();
+        }
+        else
+        {
+            step++;
+        }
+    }
+    
+    private void PreviousStep()
+    {
+        if (step > 1)
+        {
+            step--;
+        }
     }
 
-    private void GoBack() =>
-        NavigationManager.NavigateTo("/");
+    private void CompleteRegistration()
+    {
+        // You would handle your registration logic here
+        // Once completed, you navigate to the LK page
+        NavigationManager.NavigateTo("/LK");
+    }
+
+    private void GoBack() => NavigationManager.NavigateTo("/");
+
+    private string GetInputErrorClass()
+    {
+        return !string.IsNullOrEmpty(errorPassword) ? "error" : "";
+    }
 
 #line default
 #line hidden

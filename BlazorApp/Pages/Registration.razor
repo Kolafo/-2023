@@ -3,45 +3,137 @@
 
 @if (!isRegistered)
 {
-    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-
-  <link href="MainLayout.razor.css" rel="stylesheet" type="text/css" />
-  <link href="style.css" rel="stylesheet" type="text/css" />
-
-<div class="text-center mb-5">
-    <h1 style="text-align: center;font-family: 'Roboto Mono', sans-serif;font-weight: 700; font-size: 80px;"><strong>Registration</strong></h1>  
-</div>
-  <input type="text" @bind="login" placeholder="Username" style="display: block; margin-bottom: 15px; border-radius: 20px; background-color: E6D690; font-size: 150%" />
-  <input type="password" @bind="password" placeholder="Password" style="display: block; margin-bottom: 15px; border-radius: 20px; background-color: E6D690; font-size: 150%" />
-  <button @onclick="AddInfo" style="margin-bottom: 5px;display: block; border-radius: 20px; background-color: #F5E2D8; border-color: #E4717A; font-size: 150%">Registration</button>
-  <button @onclick="GoBack" style="display: block;  border-radius: 10px; background-color: #F5E2D8; border-color: #E4717A; font-size: 150%">Back</button>
-</div>
+    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 90vh;">
+        <div class="text-center mb-5">
+            @if (step == 1)
+     {
+    <h1 style="text-align: center;font-family: 'Roboto Mono', sans-serif;font-weight: 700; color: #E6D690; font-size: 70px;"><strong>Step 1</strong></h1>
+    <div style="display: flex; flex-direction: column;">
+        <input type="text" @bind="login" placeholder="Username" style="text-align: center; margin-bottom: 15px; border-radius: 20px; font-size: 150%; border: 5px solid;" />
+        <input type="password" @bind="password" placeholder="Password" style="text-align: center; margin-bottom: 15px; border-radius: 20px; font-size: 150%; border: 5px solid;" />
+    </div>
+    @if (!string.IsNullOrEmpty(errorPassword))
+    {
+        <div class="error-message">
+            <span>@errorPassword</span>
+        </div>
+    }
+<button @onclick="GoBack" style="text-align: center; display: inline-block; border-radius: 90.56px; background-color: #F5E2D8; border-color: white; font-size: 150%">Back</button>
+<button @onclick="NextStep" style="text-align: center; display: inline-block; margin-left: 10px; border-radius: 90.56px; background-color: #F5E2D8; border-color: white; font-size: 150%">Next</button>
 }
-else
-{
-   <h1 style="text-align: center; font-weight: bold;">Registration Successful</h1>
+            else if (step == 2)
+           {
+    <h1 style="text-align: center; font-family: 'Roboto Mono', sans-serif; font-weight: 700; color: #E6D690; font-size: 60px;"><strong>Step 2</strong></h1>
+    <input type="text" placeholder="Name" style="display: block; margin: 0 auto; text-align: center; margin-bottom: 15px; border-radius: 20px; border: 5px solid; font-size: 150%;" />
+    <input type="text" placeholder="Surname" style="display: block; margin: 0 auto; text-align: center; margin-bottom: 15px; border-radius: 20px; border: 5px solid; font-size: 150%;" />
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div style="display: flex; justify-content: space-between; width: 50%; margin-bottom: 15px;">
+            <select style="border-radius: 20px; border: 5px solid; font-size: 150%; width: 290px; margin-right: 10px;">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="number" min="0" max="120" placeholder="Age" style="text-align: center; border-radius: 20px; border: 5px solid; font-size: 150%; width: 290px;" />
+        </div>
+    </div>
+    <input type="text" placeholder="Telegram Tag" style="text-align: center; margin-bottom: 15px; border-radius: 20px; border: 5px solid; font-size: 150%; display: block; margin-left: auto; margin-right: auto;" />
+    <input type="text" placeholder="City" style="text-align: center; margin-bottom: 15px; border-radius: 20px; border: 5px solid; font-size: 150%; display: block; margin-left: auto; margin-right: auto;" />
+    <button @onclick="PreviousStep" style="text-align: center; display: inline-block; margin-right:10px; border-radius: 90.56px; background-color: #F5E2D8; border: 5px solid white; font-size: 150%">Back</button>
+    <button @onclick="NextStep" style="text-align: center; display: inline-block; margin-bottom: 5px; border-radius: 90.56px; background-color: #F5E2D8; border: 5px solid white; font-size: 150%">Next</button>
+}
+
+            else if (step == 3)
+            {
+                <h1 style="text-align: center;font-family: 'Roboto Mono', sans-serif;font-weight: 700; color: #E6D690; font-size: 80px;"><strong>Step 3</strong></h1>
+<div style="text-align: center; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center; font-size: 150%; background-color: #f0f0f0; padding: 10px; border-radius: 10px; width: 50%; margin-left: auto; margin-right: auto;">
+    <label>
+        <input type="checkbox" value="cooking" />
+        Cooking
+    </label>
+    <label>
+        <input type="checkbox" value="sports" />
+        Sports
+    </label>
+    <label>
+        <input type="checkbox" value="reading" />
+        Reading
+    </label>
+    <label>
+        <input type="checkbox" value="music" />
+        Music
+    </label>
+</div>
+    <button @onclick="PreviousStep" style="text-align: center;display: inline-block; margin-right:10px; border-radius: 90.56px; background-color: #F5E2D8; border-color: white; font-size: 150%">Back</button>
+    <button @onclick="CompleteRegistration"style="text-align: center;display: inline-block; margin-bottom: 5px; border-radius: 90.56px; background-color: #F5E2D8; border-color: white; font-size: 150%">Complete Registration</button>
+            }
+        </div>
+    </div>
+}
+else{
+    <h1 style="text-align: center; font-weight: bold;">Registration Successful</h1>
 }
 <style>
-body {
-    background-image: url('assets/ФОН.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
+    .error {
+        border-color: red;
+    }
+   .error-message {
+       display: flex;
+       align-items: center;
+       white-space: nowrap;
+       color: red;
+       margin-bottom: 10px;
+   }
 </style>
+
 @code {
     private bool isRegistered;
-    
     private string login;
     private string password;
+    private string errorPassword;
+    private int step = 1;
 
-    private void AddInfo() {
-        CsvLoader.AppendData("users.csv", new User(0, login, password));
-        isRegistered = true;
+    private void NextStep()
+    {
+        if (step == 1)
+        {
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                errorPassword = "Please fill in both the login and password fields.";
+            }
+            else
+            {
+                errorPassword = null;
+                step++;
+            }
+        }
+        else if (step == 3) // Add this condition to handle the last step
+        {
+            CompleteRegistration();
+        }
+        else
+        {
+            step++;
+        }
+    }
+    
+    private void PreviousStep()
+    {
+        if (step > 1)
+        {
+            step--;
+        }
     }
 
-    private void GoBack() =>
-        NavigationManager.NavigateTo("/");
+    private void CompleteRegistration()
+    {
+        // You would handle your registration logic here
+        // Once completed, you navigate to the LK page
+        NavigationManager.NavigateTo("/LK");
+    }
+
+    private void GoBack() => NavigationManager.NavigateTo("/");
+
+    private string GetInputErrorClass()
+    {
+        return !string.IsNullOrEmpty(errorPassword) ? "error" : "";
+    }
 }

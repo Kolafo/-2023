@@ -103,8 +103,8 @@ using System.Globalization;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/LK")]
+    public partial class LK : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -112,21 +112,19 @@ using System.Globalization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/Pages/Index.razor"
+#line 17 "/home/runner/Zhiostkaia-viorstka-saita/BlazorApp/Pages/LK.razor"
        
-    private void Registration() 
-    {
-        NavigationManager.NavigateTo("/registration");
-    }
-    private void Login()
-    {
-        NavigationManager.NavigateTo("/login");
-    }
+    string profilePictureUrl = "path/to/profile-picture.jpg"; // Replace with actual image path
+    string name = "John";
+    string surname = "Doe";
+    int age = 30;
+    string city = "New York";
+    string gender = "Male";
+    string[] hobbies = new[] {"Cooking", "Sports", "Reading", "Music"};
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

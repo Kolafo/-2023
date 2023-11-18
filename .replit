@@ -1,5 +1,5 @@
 language="csharp"
-run="cd BlazorApp/ && dotnet watch run"
+run="cd BlazorApp/ && dotnet run"
 
 [env]
 DOTNET_NOLOGO = "1"
